@@ -1,25 +1,33 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      ref={ref}
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       {/* Parallax Background */}
       <motion.div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroBg})`, y: bgY }}
+        className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-500 to-pink-500"
+        style={{ y: bgY }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-transparent" />
 
       {/* Content */}
-      <motion.div className="container mx-auto px-4 relative z-10 pt-20" style={{ y: textY, opacity }}>
+      <motion.div
+        className="container mx-auto px-4 relative z-10 pt-20"
+        style={{ y: textY, opacity }}
+      >
         <div className="max-w-xl">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
@@ -35,7 +43,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-lg md:text-xl text-muted-foreground mb-8"
           >
-            Join us today, shape your tomorrow. Leverage our platform to earn, grow, and succeed.
+            Join us today, shape your tomorrow. Leverage our platform to earn,
+            grow, and succeed.
           </motion.p>
           <motion.a
             href="#start-section"
