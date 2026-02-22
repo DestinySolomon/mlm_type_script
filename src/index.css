@@ -1,68 +1,86 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    --background: 228 50% 8%;
+    --foreground: 0 0% 100%;
+
+    --card: 228 40% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 228 40% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 195 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 30% 18%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 228 25% 20%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 195 100% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 20% 22%;
+    --input: 228 20% 22%;
+    --ring: 195 100% 42%;
+
+    --radius: 0.5rem;
+
+    --nav-bg: 228 50% 6%;
+    --section-alt: 228 40% 10%;
+    --hero-overlay: 228 50% 4%;
+    --feature-icon: 195 100% 42%;
+    --wave-fill: 228 50% 8%;
+
+    --sidebar-background: 228 50% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 195 100% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 30% 18%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 228 20% 22%;
+    --sidebar-ring: 195 100% 42%;
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
-  button {
-    background-color: #f9f9f9;
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-cyan-300;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4;
+  }
+
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-md border border-border/50 rounded-xl;
   }
 }
